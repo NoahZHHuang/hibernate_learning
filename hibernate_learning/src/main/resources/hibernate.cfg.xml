@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.PostgreSQLDialect
+		</property>
+		<property name="hibernate.connection.driver_class">
+		 	org.postgresql.Driver
+		</property>
+		<property name="hibernate.connection.url">
+			jdbc:postgresql://127.0.0.1:5432/jpa_test
+		</property>
+		<property name="hibernate.connection.username">
+			postgres
+		</property>
+		<property name="hibernate.connection.password">
+			Aa123456
+		</property>
+		<property name="show_sql">
+			true
+		</property>
+		
+		<!-- add the mapping in xml file way -->
+		<mapping resource = "mapping/employee.hbm.xml"/>
+		
+		<!-- add the mapping in annotation way -->
+		<!-- the config of <mapping class = "pojo.Book"/> can also be replaced by coding like:
+		     new Configuration().addPackage("pojo").addAnnotatedClass(Book.class).configure().buildSessionFactory(); 
+		 --> 
+		<mapping class = "pojo.Book"/>
+		
+		<!-- below will not help auto scan based on the specific package, wired. -->
+		<!-- <mapping package="pojo"/> -->
+	</session-factory>
+</hibernate-configuration>
