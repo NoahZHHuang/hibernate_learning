@@ -43,6 +43,17 @@ public class EmployeeDaoTest {
 		employeeToUpdate.setId(id);
 		employeeDAO.updateEmployee(employeeToUpdate);
 		employeeDAO.listEmployees();
+		employeeToUpdate.setFirstName("Noah");
+		employeeToUpdate.setLastName("Huang");
+		employeeToUpdate.setSalary(40000);
+		employeeDAO.updateEmployeeByHql(employeeToUpdate);
+		employeeDAO.listEmployees();
+		/*
+		 compare updateEmployee and updateEmployeeByHql
+		 updateEmployee: call session.get() to get the persistent object first, then modify this object, finally call session.save() to save. It will generate 2 sql statements, one select & one update.
+		 updateEmployeeByHql : only generate one update sql 
+		 * */
+		
 	}
 	
 	@Test

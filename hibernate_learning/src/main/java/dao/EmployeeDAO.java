@@ -90,6 +90,29 @@ public class EmployeeDAO {
 		} 
 	}
 	
+	public void updateEmployeeByHql(Employee employeeToUpdate){
+		Transaction tx = null;
+		Session session = factory.openSession();
+		try{
+			tx = session.beginTransaction();
+			String hql = " Update Employee set firstName = :firstName, lastName = :lastName, salary = :salary where id = :id ";
+			Query query = session.createQuery(hql);
+			query.setParameter("id", employeeToUpdate.getId());
+			query.setParameter("salary", employeeToUpdate.getSalary());
+			query.setParameter("lastName", employeeToUpdate.getLastName());
+			query.setParameter("firstName", employeeToUpdate.getFirstName());
+			query.executeUpdate();
+			tx.commit();
+		}catch(HibernateException e){
+			if(tx!=null){
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}finally {
+			session.close();
+		} 
+	}
+	
 	public void deleteEmployeeByID(Integer id){
 		Transaction tx = null;
 		Session session = factory.openSession();
