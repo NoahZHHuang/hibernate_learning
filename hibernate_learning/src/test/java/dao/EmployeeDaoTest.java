@@ -1,4 +1,4 @@
-package pojo;
+package dao;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -7,8 +7,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import dao.EmployeeDAO;
+import pojo.Employee;
 
-public class EmployeeTest {
+public class EmployeeDaoTest {
 
 	private static SessionFactory factory;
 	private static EmployeeDAO employeeDAO;
