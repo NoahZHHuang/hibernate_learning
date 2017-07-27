@@ -1,0 +1,7 @@
+CREATE SEQUENCE user_seq INCREMENT BY 1 START WITH 1;
+
+CREATE TABLE users(
+  id INT NOT NULL DEFAULT nextval('user_seq'),
+  name TEXT NOT NULL,
+  PRIMARY KEY (id)
+);
